@@ -1,0 +1,10 @@
+/media/ivan/Acer/Users/ivanr/Proyectos/VS2013/ProgramadorCS/Rep/obj/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/media/ivan/Acer/Users/ivanr/Proyectos/VS2013/ProgramadorCS/Rep/obj/Debug/Rep.Resource1.resources
+/media/ivan/Acer/Users/ivanr/Proyectos/VS2013/ProgramadorCS/Rep/obj/Debug/Rep.dll
+/media/ivan/Acer/Users/ivanr/Proyectos/VS2013/ProgramadorCS/Rep/bin/Debug/Cifra2.dll
+/media/ivan/Acer/Users/ivanr/Proyectos/VS2013/ProgramadorCS/Rep/bin/Debug/NAudio.dll
+/media/ivan/Acer/Users/ivanr/Proyectos/VS2013/ProgramadorCS/Rep/bin/Debug/Nini.dll
+/media/ivan/Acer/Users/ivanr/Proyectos/VS2013/ProgramadorCS/Rep/bin/Debug/CEXEngine.dll
+/media/ivan/Acer/Users/ivanr/Proyectos/VS2013/ProgramadorCS/Rep/bin/Debug/AvisosPCS.exe
+/media/ivan/Acer/Users/ivanr/Proyectos/VS2013/ProgramadorCS/Rep/bin/Debug/Rep.dll
+/media/ivan/Acer/Users/ivanr/Proyectos/VS2013/ProgramadorCS/Rep/bin/Debug/DevComponents.DotNetBar2.dll

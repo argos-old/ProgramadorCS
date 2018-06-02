@@ -1,0 +1,6 @@
+/media/ivan/Acer/Users/ivanr/Proyectos/VS2013/ProgramadorCS/Cifra2/obj/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/media/ivan/Acer/Users/ivanr/Proyectos/VS2013/ProgramadorCS/Cifra2/bin/Debug/Cifra2.dll.mdb
+/media/ivan/Acer/Users/ivanr/Proyectos/VS2013/ProgramadorCS/Cifra2/bin/Debug/Cifra2.dll
+/media/ivan/Acer/Users/ivanr/Proyectos/VS2013/ProgramadorCS/Cifra2/obj/Debug/Cifra2.dll
+/media/ivan/Acer/Users/ivanr/Proyectos/VS2013/ProgramadorCS/Cifra2/obj/Debug/Cifra2.dll.mdb
+/media/ivan/Acer/Users/ivanr/Proyectos/VS2013/ProgramadorCS/Cifra2/bin/Debug/CEXEngine.dll

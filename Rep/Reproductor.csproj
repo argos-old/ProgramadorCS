@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{856B408E-395E-4C49-A9E2-94179063BFCA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Rep</RootNamespace>
+    <AssemblyName>Rep</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AvisosPCS">
+      <HintPath>..\AvisosPCS\AvisosPCS\bin\Debug\AvisosPCS.exe</HintPath>
+    </Reference>
+    <Reference Include="Cifra2">
+      <HintPath>..\Cifra2\bin\Debug\Cifra2.dll</HintPath>
+    </Reference>
+    <Reference Include="NAudio">
+      <HintPath>..\..\..\NET_Librerías\Trabajo\NAudio\1.7.2\NAudio.dll</HintPath>
+    </Reference>
+    <Reference Include="Nini">
+      <HintPath>..\..\..\NET_Librerías\Trabajo\Nini\Nini v1.0, 1.1 y 2.0\Bin\DotNet\2.0\Release\Nini.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Bucle.cs" />
+    <Compile Include="Enumeraciones.cs" />
+    <Compile Include="Reproductor.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resource1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource1.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resource1.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\alarmaIncendios.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\aplausos.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bip.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bip2.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bip3.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\burro.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\campanillas.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\corazon.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\corazonLatidoBucle.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\despertador.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\despertadorAntiguo.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\doceCampanadas.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gallo.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\llamadaEnterprise.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\metralleta.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\risaBebe.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\risafemeninaMiedo.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\risaMaslulinaMiedo.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ritmoBaseBateria.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ritmoBaseBateria2.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ritmoBaseBateria4.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ritmoBaseBateria6.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ritmoMilitar.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ritmoRedoble.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ritmoTimbales.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\robot.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sirenaMaderos2.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\telefono8Tonos.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\telefonoAntiguo2.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tictac.mp3" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

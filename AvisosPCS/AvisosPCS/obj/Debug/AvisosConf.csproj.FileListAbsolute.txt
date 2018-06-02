@@ -1,0 +1,16 @@
+D:\OneDrive\Proyectos\VS2013\ProgramadorCS\AvisosPCS\AvisosPCS\bin\Debug\AvisosPCS.exe.config
+D:\OneDrive\Proyectos\VS2013\ProgramadorCS\AvisosPCS\AvisosPCS\obj\Debug\AvisosPCS.exe
+D:\OneDrive\Proyectos\VS2013\ProgramadorCS\AvisosPCS\AvisosPCS\obj\Debug\AvisosPCS.pdb
+D:\OneDrive\Proyectos\VS2013\ProgramadorCS\AvisosPCS\AvisosPCS\obj\Debug\AvisosConf.csprojResolveAssemblyReference.cache
+D:\OneDrive\Proyectos\VS2013\ProgramadorCS\AvisosPCS\AvisosPCS\obj\Debug\AvisosPCS.FormConf.resources
+D:\OneDrive\Proyectos\VS2013\ProgramadorCS\AvisosPCS\AvisosPCS\obj\Debug\AvisosPCS.Properties.Resources.resources
+D:\OneDrive\Proyectos\VS2013\ProgramadorCS\AvisosPCS\AvisosPCS\obj\Debug\AvisosConf.csproj.GenerateResource.Cache
+D:\OneDrive\Proyectos\VS2013\ProgramadorCS\AvisosPCS\AvisosPCS\bin\Debug\AvisosPCS.exe
+D:\OneDrive\Proyectos\VS2013\ProgramadorCS\AvisosPCS\AvisosPCS\bin\Debug\AvisosPCS.pdb
+D:\OneDrive\Proyectos\VS2013\ProgramadorCS\AvisosPCS\AvisosPCS\bin\Debug\AvisosRep.exe
+D:\OneDrive\Proyectos\VS2013\ProgramadorCS\AvisosPCS\AvisosPCS\bin\Debug\Cifra2.dll
+D:\OneDrive\Proyectos\VS2013\ProgramadorCS\AvisosPCS\AvisosPCS\bin\Debug\Rep.dll
+D:\OneDrive\Proyectos\VS2013\ProgramadorCS\AvisosPCS\AvisosPCS\bin\Debug\CEXEngine.dll
+D:\OneDrive\Proyectos\VS2013\ProgramadorCS\AvisosPCS\AvisosPCS\bin\Debug\AvisosRep.pdb
+D:\OneDrive\Proyectos\VS2013\ProgramadorCS\AvisosPCS\AvisosPCS\bin\Debug\Cifra2.pdb
+D:\OneDrive\Proyectos\VS2013\ProgramadorCS\AvisosPCS\AvisosPCS\bin\Debug\Rep.pdb

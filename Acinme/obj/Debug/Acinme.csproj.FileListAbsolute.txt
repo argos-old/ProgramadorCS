@@ -1,0 +1,8 @@
+D:\OneDrive\Proyectos\VS2013\ProgramadorCS\Acinme\bin\Debug\Acinme.exe.config
+D:\OneDrive\Proyectos\VS2013\ProgramadorCS\Acinme\bin\Debug\Acinme.exe
+D:\OneDrive\Proyectos\VS2013\ProgramadorCS\Acinme\bin\Debug\Acinme.pdb
+D:\OneDrive\Proyectos\VS2013\ProgramadorCS\Acinme\obj\Debug\Acinme.Properties.Resources.resources
+D:\OneDrive\Proyectos\VS2013\ProgramadorCS\Acinme\obj\Debug\Acinme.csproj.GenerateResource.Cache
+D:\OneDrive\Proyectos\VS2013\ProgramadorCS\Acinme\obj\Debug\Acinme.exe
+D:\OneDrive\Proyectos\VS2013\ProgramadorCS\Acinme\obj\Debug\Acinme.pdb
+D:\OneDrive\Proyectos\VS2013\ProgramadorCS\Acinme\obj\Debug\Acinme.FormInme.resources

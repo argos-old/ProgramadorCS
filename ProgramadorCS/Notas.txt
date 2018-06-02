@@ -1,0 +1,614 @@
+﻿PROGRAMADOR 3.0
+===============
+	=================================================================================
+   |  ¡ ¡ ¡  H A Z   R E S P A L D O S    D E    F O R M A    R E G U L A R   ! ! !  |
+	=================================================================================
+
+PARA HACER AL FINAL O POCO PRIORITARIO:
+- Piensa en la conveniencia de cambiar los modificadores de privados a protected
+- Cuando todo esté más definido eliminar las referencias y recursos que sobran. LEE @NOTAS.txt EN LA CARPETA DEL .sln
+- Quitar todas las directivas y referencias sin uso.
+- Elegir icono
+2 Ejecutar el análisis del código (ALT+F11) y tomar las medidas pertinentes SI ES QUE PROCEDE.
+- Inhibir el uso de controles dependiendo de las opciones que se seleccionen (Deshabilitándolos con Enable=false). Nota: Aunque se utilice, 
+  CUANTO MENOS SE NECESITE MEJOR, no está para parchear fallos. Ver lo hecho en vb con Programador PARA NO CAER EN LOS MISMOS ERRORES.
+- Buscar un nombre más "comercial" que "ProgramadorCS" Por ej: algo relacionado con asistente, Cr0n0s, Moiras (Parcas),
+- Eliminar el switchButton Emulación  y en el tab Ver del Ribbon (la bool emulación está asociada)
+- Intentar en el Settings.Designer setear A1Hora al día de hoy con DateTime.Today. Nota: he probado sin éxito establecerlo desde
+  [global::System.Configuration.DefaultSettingValueAttribute("2015-01-01")] pero está pensado para parsear una fecha desde una cadena
+  SI ESTÁ PENSADO PARA PARSEAR UNA CADENA PRUEBA A ESTABLECERLO COMO CADENA .ToString()
+- Con los combos mayor/menor y más/menos habría que cambiar los valores máx. y min. de los integerInput. Es decir, en estos casos no 
+  deberían permitir > 100% ó < 0%. En esos casos cambiar Máx 99 y Min 1
+- Bajar la tasa de refresco en el temporizadorEnergiaAlimentación, está en 1 seg., pero podía perfectamente bajarse a 5, 10 ó 20 seg
+- Aunque Windows Forms parece no dar problemas, plantéate como en Gtk generar los eventos dentro del código para aligerar el diseñador
+- Pasar las clases Acciones.cs y Procesos.cs a un proyecto independiente, para que la dll pueda ser llamada desde la aplicación
+  y Acinme y "descargar" un poco la aplicación. 
+- Hacer alguna prueba para cifrar tipos que no sean string en Properties.Settings.
+- Pasar todas las variables utilizadas en las settings de VS a Nini (LEE LA NOTA 6 ABAJO: VENTAJAS/DESVENTAJAS CON POSIBLES SOLUCIONES)
+
+
+TAREAS:
+- En Programador 2 VB hay opciones con temp Win (cierres de sesión, comentarios...) que no funcionan. Posiblemente se deban un orden
+  incorrecto en los argumentos o diferencias entre W7 y W8.1 (Nota: Casi todas las pruebas se hicieron con Cierre Sesión)
+- Ten en cuenta los codigos de error, para retornalos y manejarlos
+- Los timeSelector provocan una excepción estando en 0 y pulsando el botón "v". Controlar la excepción en los dos existentes.
+- Elegir cómo se deberá setear retardo: (cada vez que los timeSelector cambien & cada vez que cambie el índice del Tab) | existiendo
+  dos retardos activos, siendo seleccionado el que corresponda al "inicio" 
+- Al calcular el retardo de la forma que se hace (siendo un entero), puede haber, y de hecho hay, un desfase de 1 segundo. Soluciónalo
+  en el cálculo o simplemente utiliza retardo como double.
+- Las flechas de navegación en el dateTimeInput correspondientes a Month.Calendar no generan evento de cambio de fecha. Quítalo 
+  o soluciónalo
+2 Ir añadiendo opciones en los distintos menús (Ver, Configuración, etc). Ver IDEAS
+- Comprueba si el texto del circularPB es personalizable. Hay modos en los que no se ve
+- Recuerda que tienes que implementar Windows API Code Pack. Échalo un vistazo (creo que había unas pruebas) al menos para saber cómo va
+- Recuerda que dejaste espacio en el panel inferior para, añadir si procedía, información adiccional a modo de menuStrip con un minipanel
+  informativo y una pequeña barra de progreso.
+- Las lecturas de temperaturas pueden darse ademas de en Celsius en Faranheit
+- Ver si existe alguna forma de poder leer la velocidad de transferencia del disco duro para añadir condicionamiento. (Ej: 
+  Apagar si el tráfico del HD baja de 10 MB/s durante 2 minutos) PASARLO A IDEAS DESPUÉS DE ECHAR UN VISTAZO
+- Ver si existe alguna forma de detectar procesos y/o servicios para añadir condicionamiento (Ej: Reiniciar si el proceso 
+  "Firewall" se cierra o termina) PASARLO A IDEAS DESPUÉS DE ECHAR UN VISTAZO
+- Para el cálculo de cargas tal vez se podría usar matrices (o List<T>, split o algo así) haciendo un cálculo medido de un rango
+- La función sinPermisos en Temp se utiliza unas cuantas veces, alguna de las cuales nada tiene que ver con la Temperatura (Aero por ej)
+  cambiarla de ubicación o modificarla AGREGANDO otra en la funciones comunes (bool permisosApp o algo similar)
+- Añadir constante con el nombre del programa y la versión. (Para diálogos, cadenas, etc) aplicarlo y sustituir donde YA procede
+- dynamic permite await, puede ser interesante en la monitorización para que no retrase el inicio.
+- Según informe de análisis de código se recomienda implementar la interface IDisposable en la clase CPU
+- Cambiar botón DIA del timeSelectorA1Hora por AHORA para seleccionar hora y fecha u otra cosa DIA no tiene sentido
+- Empieza con el control de excepciones. Como siempre: únicamente en capas superiores. Lee Nota 5. A tener en cuenta:
+	- Win32Exception al reiniciar o ejecutar algo como admin y cancelar el dlg UAC
+	- NullReference con todo lo relativo a dynamic
+- Empezar con los avisos personalizables.
+- Empezar con las deshabilitaciones de los controles. Para poder discriminar los errores reales
+- El sistema de play/pausa/stop del tempTempor, aunque funciona, es una galimatías. Piensa un sistema mejor estructurado y rehazlo.
+- Aprovechando que ya están hechas las propiedades, los tiempos de los integerInput se pueden setear en segundos, que es la unidad
+  en la que se trabaja siempre.
+- Piensa una sistema estructurado y más o menos homogéneo de información para el panel de info para todos los condicionamientos. 
+  Habrá que tirar de StringBuilder para resaltar el texto con negritas, colores, etc (Echa un vistazo a Programador VB)
+- Antes de los reinicios técnicos se debieren guardar las settings. (Ej: Al reiniciar por temp.: tab, radio, valores, etc.)
+- En A1Hora al superarse el tiempo estando en pausa se debe resetear el temporizador, barra de progreso, etc. El mensaje, aunque
+  técnicamente no está mal, sería lógico cambiarlo por otro más acorde a lo que sucede dando la posibilidad de continuar o no.
+- Parametrizar la aplicación. 
+	X Modificar Program.cs y el constructor del Form
+	X Esbozar el sistema. AUNQUE NO SEA LO SUYO, A ESTAS ALTURAS SE HA OPTADO POR SETEAR LOS CONTROLES DESDE procesaParametros()
+	  y después hacer "Play". Lo idóneo hubiera sido poderlo hacer en modo consola; es decir, sin que apareciera el Form.
+	! Aunque para poder implementar las JumpList de WACP, se ha tratado el parámetro "i" (inmediato) de forma independiente
+	  lo suyo sería tratarlo como t 0. PTE DE ELIMINACIÓN. SE CREÓ ACINME.EXE
+1 Acuérdate de ir tomando notas sobre el funcionamiento de las clases, métodos, etc. LUEGO SE OLVIDA!!
+2 Con los radios se produce el "efecto eco". Aplicar la solución de GHashApp: encapsular los eventos con if (radio.Checked). Comprueba
+  si pasa o no lo mismo en todos los radios, checkButtons, checkBox, etc. Echa un vistazo a GHashApp estaba implementado (Ver Nota 4) 
+  Con la cantidad de controles y de settings que hay aplicar el condicinamiento (!iniciando) en los controles usados por settings
+  al eliminar el "efecto eco", reducirá el tiempo de carga del form.
+- Durante las acciones de apagado y reinicio se debieran guardar las settings.
+- Crear un proyecto "Pruebas eventos" para manejar el evento de envío completado desde Form1 o FormMail.
+1 Al menos en las clases CPU, RAM, Temp, Procesos, etc empieza con los comentarios XML anotando el funcionamiento
+- Solucionar problema "propietario" MsgBox y hacerlo público en vez de utilizar un método privado en cada clase
+- El informe del análisis de código recomienda, supongo que algún tipo de convención,  incluir los métodos extern en una clase 
+  denominada "NativeMethods". Pondéralo y actúa en consecuencia.
+- Pasar todos los métodos  de Procesos.cs que no tengan que ver como ejecuciones externas y pasarlos a Acciones.cs. Después 
+  renombrarla a NativeMethods (s/informe de análisis de código)
+- Al finalizar la acción, en ejecutaAccion(), se debe restablecer la barra de tareas eliminando el overlayIcon utilizado.
+- Sacar las enumeraciones fuera de la clase a nivel de namespace
+- Repasar lo hecho con los envíos de correos. Parece que han cambiado los estándares de seguridad en Google y con lo hecho, 
+  por tanto, lo detecta como un "acceso sospechoso a la cuenta". Curiosamente dice que hay clientes de correo como ¡Outlook
+  y Thunderbird! que no llegan a esos estándares. REVISA Y SOLUCIÓNALO!!
+2 Pasar las funciones de cifrado a una librería independiente, actualizar el código en los envíos de Mails y eliminar
+  la clase Cifrados.cs PTE ELIMINACION CIFRADOS.CS
+
+PRIORITARIO:
+
+- Integrar notifyIcon
+	! Echa un vistazo a lo hecho en Programador VB (estaba bastante bien hecho)
+	X Buscar icono
+	2 Crear proyecto de pruebas NotifyIcon
+	X Crea un menú contextual (ver VB)
+	X Implementa minimizar en bandeja
+	2 Empezar con las notificaciones. Éstas irán sincronizadas con los botones
+- Rehacer procesaParametros de FormPpal y quedarlo de forma similar a FormInme. Tal y como está ahora, además de estar
+  manga por hombro, es poco práctico.
+- El botón de configuración avisos genera una excepción no controlada. Ver problema y posibles soluciones.
+	
+ACABADO:
+
+- REMATANDO (directrices):
+	! Aprovechar lo ya hecho y no añadir nuevas opciones que afecten a todo el código y deberían haberse previsto antes
+	! Deja los bugs para el final, ten presente siempre el objetivo y no te líes
+	X El panel secundario pasa al nuevo tab OCULTO!! de depuración
+	X El progressbar circular idem: Ya existe progreso en la barra de tareas y estéticamente no quedaba bien.
+	X El tab de programación quedará oculto pte de futuras ampliaciones.
+	X El panel primario: 
+		X funciona de forma sincrónica con TaskbarProgressBarState con colores verdes/amarillos/rojos
+		X Incluir información pensada para el panel secundario en el primario a modo de monitorización
+	3 Empieza con las deshabilitaciones
+	X Busca el icono definitivo
+	X Si vas a cambiar el nombre... CÁMBIALO.
+	X Insertar iconos o/e imágenes donde proceda (Ej: el tab ppal con los iconos utilizados en los overlay)
+X Implementar condicionamiento por Unidades:
+	X Diseñar el panel correspondiente de la pestaña del superTab
+	X Crear las propiedades pertinentes para settings e implementarlas en eventos y carga/reset settings
+	X Las unidades se han listado en el combo de la A a la Z. Para saber cuáles están operativas, se me ocurre resaltarlas
+	  en negrita u otro color. LEE EL SIGUIENTE PUNTO. SE PODRÍA HACER PERO SIEMPRE QUEDARÍAN EXCLUIDAS LAS UNIDADES QUE 
+	  ESTÁN DESCONECTADAS, ASÍ QUE SE QUEDA COMO ESTÁ.
+	X Tal y como están, si se tratara de una Ud de red, quedaría excluida (creo que tienen nombres como \\MiUdEnRed.. echa 
+	  un vistazo en Internet o en una VM). Además son un montón de elementos añadidos sin que la gran mayoría hagan falta.
+	  Se podría listar las existentes y añadir un item "Otra (especificar)". Piénsatelo y solvéntalo. LEE EL PUNTO ANTERIOR.
+	  SE QUEDA COMO ESTÁ. SEGÚN PARECE LAS UDS SEAN DE RED O DEL TIPO QUE SEAN DEBEN TENER ASIGNADA UNA LETRA, ASÍ QUE ESTÁ BIEN
+	X Crear una enumeración para las magnitudes. En la clase Red ya hay una, así que lo suyo, sería utilizar sólo una que fuera
+	  ambivalente. SE HA CREADO UNA EN LA CLASE DE ENUMERACIONES QUE VALE PARA LAS 2
+	1 Tal y como están ahora los checkbox funcionan como OR (se ha añadido una label "o"), se podría incluir un combo "y/o" para
+	  elegir si también pudiera funcionar como AND. Añade el combo, propiedades, Diséñalo en Puebas DriveDetector e impleméntalo
+X Implementar ejecuciones:
+	X Diseñar un form para la configuración (echa un vistazo a progrmador VB)
+	X Crear propiedades y settings necesarias
+	X Aprovechar los métodos de Procesos.cs y/o Acciones.cs que ya están hechas 
+	X Implementarlo en form1
+3 Implementar envio de correos electrónicos: (QUEDAN UN PAR DE PUNTOS PTE AL FINAL)
+	X Diseñar un form para configurar los datos de la cuenta, asunto, correo, etc.
+	X Piensa si dar la posibilidad de elegir el destinatario (sería útil para mandar un correo a una determinada hora por ej)
+	X Plantéate, en caso de añadir destinatario, si añadir la posibilidad de adjuntar archivos.
+	X En caso de ampliación, incluir botón para abrir ficheros de texto plano .txt y enriquecido .rtf
+	X Crear las settings y propiedades necesarias
+	X El almacenamiento de la contraseña ha de ser cifrado. Echa un vistazo a lo hecho con Nini y la clave HMAC en GHashapp. Nota:
+	X Idem con el asunto y el cuerpo.
+	X Piensa si incluir el preseteo de los datos de la cuenta para los correos más utilizados (Ej: Un combo para elegir Gmail,
+	  Yahoo, Hotmail, etc. 
+	X Se supone que los mails han de ser enviados sin necesidad de abrir el form, por tanto piensa cómo controlar el evento de 
+	  envío, etc 
+	X Añadir alguna función que controle con expresiones regulares la sintaxis de las direcciones 
+	X Añadir una función que detecte cuando "TODO" parezca estar en orden y avisarlo mediante un check en el botón "Aceptar".
+	X Después de creada la función checkFinal (la integrada en closing) setear un bool de settings para que pueda ser 
+	  consultada cuando y desde donde se quiera.
+	X Se debiera añadir un botón u otro sistema para poder quitar un archivo adjunto añadido
+	X Crear una clase para el envío que utilice las variables de Properties.Settings el FormMail únicamente estará para
+	  establecer esas variables.
+	3 Por lo que parece una propiedad puede sustituir al método generado para el evento SendCompleted. Aprovechando esto, si no 
+	  encuentras algo mejor, se podrían generan eventos que controlen el cambio de la propiedad en Form1.cs y FormMail.cs que
+	  será establecida en la clase Mail.cs. LO QUE SE HA HECHO: EL EVENTO SE DESENCADENA EN MAIL.CS CAMBIANDO UNA PROPIEDAD BOOL EN 
+	  FORMMAIL.CS Y, UNA VEZ ALLÍ, GENERANDO OTRO EVENTO. HABRÍA QUE SIMPLIFICARLO, GENERANDO UN EVENTO PUBLICO EN MAIL.CS Y 
+	  DECLARARLO EN MAILFORM.CS Y FORM1.CS. PARA ESO: PRUEBAS EVENTOS.SLN
+	X Añadir un botón auxiliar al textboxContrasena para (Des)velar la contraseña
+	X Cambiar orden de tabulación: DESDE MENÚ VER "CAMBIAR ORDEN DE TABULACIÓN" +info: https://msdn.microsoft.com/es-es/library/bd16a8cw(v=vs.110).aspx 
+	3 Cuando se realiza un envío mediate un puerto que no es el correcto el servidor (o Windows) retorna "envío completado" aunque
+	  éste en realidad no se haya producido. Tenlo en cuenta al manejar el evento SendCompleted. SE HA INCLUIDO UNA NOTA EN EL 
+	  MSGBOX AVISANDO DE ESTA POSIBLE CONTINGENCIA, A FALTA DE ENCONTRAR OTRA SOLUCIÓN MEJOR.
+	X En las preconfiguraciones añadir un mensaje controlado con una bool (para mostrarlo sólo 1 vez) avisando de que los datos
+	  son orientativos pudiendo haber variaciones
+	X Cambiar la identificación del switch de configuración hecha con el índice por el texto. Se podría modificar el orden como
+	  se quisiera.
+	X Las propiedades, aunque duplicadas, deben tener funciones distintas. Es decir: en FormaMail.cs estarán los setter y en
+	  Mail.cs getter. FORMAIL.cs NECESITA LOS GET TAMBIÉN. SE UTILIZAN EN CARGASETTINGS()  
+	3 Hacer el control de excepciones:
+		X Cubrir todos los controles de usuario, carga y salida.
+		X En el puerto se parsea el texto del textbox para convertirlo en ushort. Por tanto se debiere impedir que se introdujeran 
+		  letras. HECHO, AUNQUE HABRÍA QUE DIFERENCIAR OVERFLOW, ENTRADA INCORRECTA Y ACTUAR EN CONSECUENCIA
+		! Controlar excepción por manipulación manual del txt cifrado. La excepción, al producirse externamente, escapa a la "red"
+		  hecha en los controles de usuario. Si se quiere hacer habría que crearse en cifrados o en la clase Properties.Settings 
+		3 El archivo adjunto no existe o desaparece después de la comprobación. SE HA PREVISTO Y SOLUCIONADO ANTES DE QUE PUDIERE
+		  PRODUCIRSE LA EXCEPCIÓN.
+		- Manejar las posibles excepciones de Net.Mail. LAS EXCEPCIONES NO SE PRODUCEN (CONTRASEÑA, USUARIO, CUENTA INCORRECTA, 
+		  NÚMERO DE PUERTO NO VÁLIDO, ETC... MENOS LAS DE SMTP QUE SÍ FUNCIONAN) ¿ENVÍO ASÍNCRONO? QUEDA PTE.
+	X Cifra todos los campos que quedan, usuario, remitente, host, etc...
+	X Añadirlo a ejecutaAcciones
+	X Añadir un acceso a configuración desde el Form
+	2 Al iniciar desde programador, en caso de que no se haya pasado el checkFinal ni se haya enviado nada (FMConfiguraciónCorrecta),
+	  se debería abrir un dlg avisando y/o abriendo FormMail 
+		X al pulsar radioEnviarMail 
+		- al pulsar botonIniciar (QUEDA PTE. HABRÁ QUE HACERLO EN CONJUNTO CON LOS FUTUROS CHECKS DE EJECUCIÓN Y AVISOS)
+	! Añadir opción de confirmación de envío en el form ppal. POR AHORA NO. NO ES MUY NECESARIO, NO HAY SITIO O QUEDA MAL
+	- El Combo de preconfiguraciones quedaría mejor si estuviera integrado como item del textBoxHost PTE 
+X Echa un vistazo para ver si se puede añadir como Acción "Enviar un e-mail". SÍ SE PUEDE
+X En los condicionamientos por red, si consigues "ver" una interfaz de red en concreto. Recuerda que sólo conseguías "ver" el adaptador 
+  de red que Windows considera "por defecto" [0] o sumar todas DE FORMA CORRECTA con foreach. También había problemas con transmisiones
+  mayores que 3 GB aprox. (Ver MVR), ¿incluirlo con el resto de cargas?. SUPERADO Y MEJORADO
+X Las variables que controlan los parámetros  TipoApagado, retardoArg, Forzado y Comentario pueden ser manejados desde un getter 
+X Añadir un ContextMenuBar (análogo al menuStrip). Puede que no quepa toda la configuración utilizando tantas imágenes. NO
+3 Empezar con eventos de red:
+	X Decidir si utilizar la librería de NetworkMonitor o utilizar una de creación propia. CREACIÓN PROPIA
+	X Crear un proyecto de prueba para refrescar lo hecho con MVR y solucionar los problemas que entonces no supe solventar
+	X Crear un proyecto de prueba para monitorizar el tráfico de(l) (los) disco(s) duro(s) Nota: he pensado que conociendo
+	  el espacio disponible y total con System.IO.DriveInfo se puede calcular el tráfico/seg. TAL Y COMO ESTÁ HECHO, AUNQUE
+	  LA IDEA ERA BUENA, NO FUNCIONA. VER "Pruebas Trafico HD.sln"
+	! En caso de que lo explicado en el punto anterior funcione renombrar el tab, enums, etc de "Eventos red" a "Tráfico". LEE NOTAS
+	3 Diseñar el panel correspondiente del superTab:
+		3!Definir los controles en el form. QUEDA PENDIENTE REDISEÑAR LA 1ª PARTE. DEMASIADO CONTROLES. LEE ANTEPENÚLTIMO PUNTO
+		x Crear las propiedades y settings oportunas
+	X Crear un 2º proyecto de pruebas que defina cómo quedará Red.cs. Sería conveniente, no sólo limitarla a dar los bytes de 
+	  subida y bajada, sino que con un método long siguienteValor fuera dando sólo la diferencia entre 1 periodo de 2 llamadas.
+	  ¿Se debe crear manualmente o se podría utilizar PerfomanceCounter? SE OPTÓ POR LA CREACIÓN DE UNO MANUAL
+		- Se ha copiado lo hecho en Pruebas Red 3 aquí, pasando los cambios de un sitio a otro. NO ES NADA PRÁCTICO. BUSCA OTRA SLN
+	X Implementar en el form lo hecho en la clase
+	X En el condicionamiento por velocidad añadir un tiempo (Ej Con el adapt X la bajada se menor de 5 KB/s DURANTE X MIN.
+	3 Al ultilizar Consulta() en el radio "Cuando termide de ..", recuerda el error (posiblemente overflow tratado) que se 
+	  producía al sobrepasar los 3GB en MVR. Para evitarlo lo más sencillo es que sea la app la que lleve la cuenta. Nota: El
+	  problema es de Windows. Al hacer la consulta de los bytes enviados/recibidos habiendo sobrepasado los 3GB devolvía 0.
+	  SE HA INTENTADO SOLVENTAR CON UN PARCHE EN SIGUIENTEVALORBYTES().. AUNQUE AÚN ESTA SIN COMPROBAR EN LA PRÁCTICA.
+	X Eliminar la enum y sustituir sus 16 referencias por la enum Magnitud del namespace Redes porque son iguales.
+	1!Al añadir otros 3 elementos más en el radio "La velocidad de" ha quedado aún más abigarrado de lo que ya estaba. Rediséñalo
+	  de manera que quede algo más "armonioso". SE HA RETOCADO LO QUE YA HABÍA, ASÍ QUE, QUEDA PENDIENTE
+	X Implemetar WACP
+	X Implementar Pausa/Stop
+X Plantéate si agrupar métodos setCONTROL utilizados en cargaSettings en secciones mayores (ahora hay 1 para cada control: 
+  setComboA, setComboB, etc.) De forma que quede setA1Hora, setTemporización, setCarga, etc. NO. HAY MENOS DE LO QUE PARECE
+X Posiblemente debido algún nuevo tipo de norma añadida en los analizadores, los nombres de los png incluidos dan error. Lo más
+  probable es que sea por utilizar guiones - y/o por ser demasiado largos. POR USAR GUIONES. NOTA: LOS GUIONES BAJOS SÍ SON VÁLIDOS.
+  NOTA2: EL "DISEÑADOR" DE RECURSOS PERMITE EL CAMBIO DE NOMBRE DE FORMA SENCILLA.
+X Lanzar las acciones de inmediato como tareas de la JumpList
+		NOTA: Se supone que son enlaces hacia aplicaciones, por lo que habrá que llamar a la aplicación mediante parámetros
+		X!Elegir entre "parametrizar" el form o llamar a las acciones inmediatas externamente mediante la librería o el comando
+		  pertinente. Por ej: Bloquear-> rundll32.exe user32.dll LockWorkStation, aunque de esta forma no se podría suspender.
+		  SE OPTA POR LA "PARAMETRIZACIÓN". COMO ESTE PUNTO REQUIERE UNA SECCIÓN ESPECÍFICA, POR AHORA ME LIMITO A ESBOZAR
+		  CÓMO SE HA DE ESTRUCTURAR Y SE RESTRINGE A INMEDIATO. NOTA2!! SE OPTÓ POR CREAR ACINME.. LEE 2 PUNTOS MÁS ABAJO
+		X Solucionar los problemas con iconReference: Cómo acceder a los iconos añadidos como recursos de la aplicación. Lo
+			suyo es utilizar los MISMOS que se utilizan en el form, si no encuentras otra solución habrá que crear un dll sólo
+			de recursos. SE HA OPTADO POR COMPILARLO DESDE AXIALIS ICONWORKSHOP. LA OTRA OPCIÓN HUBIERA SIDO CREAR Y COMPILAR
+			OTRO PROYECTO EN C++, DADO QUE NET NO PERMITE ESTO
+		X Solucionar el problema que se da al ejecutar de nuevo la aplicación (se ejecutan 2 instancias). SE CREÓ UN PROYECTO
+			INDEPENDIENTE, EJECUTADO DE FORMA OCULTA (MINIMIZADO, SIN APARECER EN LA BARRA DE TAREAS Y AUTO-CERRADO DESPUÉS DE
+			EJECUTARSE), QUE GESTIONA DE FORMA EXTERNA LAS ACCIONES DE INMEDIATO PARA QUE PUEDA SER TRATADO DE FORMA CORRECTA
+			POR LAS JUMPLIST
+		X Plantearse la posibilidad de sustituir las llamadas a la propia aplicación por llamadas a Rundll32, aunque con la
+			suspendión no se podría. IDEM ANTERIOR.
+		X La parte de código correspondiente a las JumpList, tal y como está enfocado en este proyecto, no necesita cargarse
+			cada vez que se inicie la aplicación. Contrólalo con una bool o con datos estadísticos (a día de hoy sin
+			implementarse) de forma que se cargue durante el primer arranque y durante el reseteo de las settings.
+X Implementar SetOverlayIcon
+	X Identificar los iconos que hacen falta: A1Hora, Temporiz, RAM, CPU, Temp, Alim, Plan Ener, Vida Bat, Red 
+	X Buscar y descargar los iconos restantes en internet (sólo formato .ico)
+	X Implementarlos, añadiendo la posibilidad de (des)habilitarlos.
+X Implementar ThumbnailButtons:
+	X Buscar, elegir y añadir iconos.
+		X Crear los eventos para cada botón y enlazarlos con los del form
+3 Implementación TaskBar:
+	3 Implementar TaskbarProgressBarState para las operaciones de temporización. SE TENDRÁ QUE REHACER JUNTO CON EL 
+		RESTO DEL SISTEMA PLAY/PAUSE/STOP DE ESTE TEMPORIZADOR.
+	! Idem anterior para la carga utilizando verde para valores normales y rojo para alarma (Ej: En Suspensión si
+		la temp es > 80ºC, cuando la temperatura sea de 70ºC colorear la barra de tareas en verde o en rojo cuando > 80ºC)
+		NO ES LÓGICO HACER ESO. SE PODRÍA HACER COMO HERRAMIENTA DE MONITORIZACIÓN O HACERLO EN UNA APLICACIÓN DIFERENTE, 
+		PERO NO AQUÍ. LIMÍTATE A LA TEMPORIZACIÓN 
+	! Idem anterior para las operaciones con el condicionamiento de energía IDEM CONCLUSIONES ANTERIOR.
+	! Idem anterior eventos red. IDEM CONCLUSIONES ANTERIOR
+	3 Implememtar progreso en la temporización de cargas. FALTA SOLUCIONAR "FALSA PAUSA"
+	X idem anterior en temporización alimentación.
+X Implementacion WACP - Condicionamiento de Energía
+	X Esbozar y diseñar las apariencia de los controles 
+	X Pasar el valor del dateTimeInputTiempoRestanteBat y pasarlo a TimeSpan y vicevera
+	X Crear las propiedades y variables pertinentes en Form1.cs y en settings
+	X Crear las propiedades del check durante y el integerinputminutosEnergia
+	3! Aunque estaba pensado hacerlo al final, EN ESTE CASO realizar las inhibiciones de controles pertinentes. (Especialmente por
+		los radios + "subradios"). SE APLAZA
+	3!Crear una clase independiente para la energía. Nota: Para futuras ampliaciones podría incluir las potencias/consumos en W.
+		de los procesadores y la GPU gráfica a través de OpenHardwareMonitor. Nota2: idem con consumos en mW de la batería con WACP
+		EN ESTE CASO NO MERECE LA PENA: TODAS LAS PROPIEDADES QUE MANEJA POWERMANAGER SON ESTÁTICAS Y LOS EVENTOS HAY QUE DECLARARLOS
+		DENTRO DEL FORM
+	X Fijar el valor máximo de dateTimeInputTiempoRestanteBat según los datos del fabricante proporcionados por WACP
+	X Elige si utilizar bool para controlar la (des)habilitacion de los eventos de PowerManager de WACP o crear una función
+		que elimine los eventos (evento -= Función) SE QUEDA CON LA BOOL
+	X Después de crearlo y probarlo en Test integrarlo en botonIniciar
+	X Ordenar código
+	X Implementar pausa y stop
+X En botón iniciar elige qué condicionamiento utilizar: if / if else O switch. No los 2 meZclados. No es estético y no creo que sea correcto.
+X Plantéate cambiar la configuración de la aplicación nativa de VS (user.config) por una hecha con Nini.dll. LEE NOTAS. SE QUEDA COMO ESTÁ
+3 Sustituye todos los if/else por switch, cuando se pueda.
+3 Estructura y ordena bien el botón iniciar. Da asco verlo (mal ordenado y lleno de comentarios).
+3 Definir e implementar el comportamiento de los botones pausa/parar
+X Quita las instrucciones de prueba en Acciones.cs y ejecutaAcciones() de forma que el programa quede funcional
+X Los nombres utilizados para declarar las clases de RAM, CPU y Temp, son los mismos (ram, cpu y temp) en la monitorización y los 
+  condicionamientos por carga. Inexplicablemente, al menos aparentemente, NO genera ningún error, posiblemente porque hace el doble 
+  de consultas en un mismo tiempo. Resumiendo: no es correcto, y aunque se declare el doble se debe utilizar un nombre para cada 
+  cosa (tempCarga y tempMon o algo así) CUANDO SE SOLUCIONE PASAR A NOTAS
+X Mejora la apariencia del tab de "Carga Equipo": Letra más pequeña, usa un groupBox, alinea parte inferior, cambia "Es" por "El valor.."
+3 Antes de implementar nuevas características nuevas, prueba, pule y organiza lo ya existente de forma que quede funcionando. Rematar:
+	3 Botones Inicio, Pausa y Stop
+	3 Temporizaciones
+X Empezar con los condicionamientos por cargas
+	X Decidir si se añade un temporizador o si se integra dentro de timerMon. TEMPORIZADOR PROPIO
+	X Decidir si eliminar label y combo "durante MAS/MENOS" loquesea. NO TIENE MUCHO SENTIDO. NO TIENE NINGÚN SENTIDO
+	X Rediseñar por completo la parte inferior del tab de cargas
+	X Pulir comportamiento de los integerInput (valores mínimos, saltos de 1 en vez de 5)
+	X Eliminar labelInfoCargas2 ("en XX") la info está repetida y no queda bien.
+	X Construir en botonTest y cuando funcione integrarlo en botonIniciar
+	3!Implementar pausa. AQUI NO TIENE MUCHO SENTIDO. POR AHORA PAUSA = STOP. En caso de querer implementar pausa real habrá que declarar
+	  cuentaAlarma fuera de la temporización de cargas. HECHO PERO COMO "MODO STOP".
+X Eliminar del proyecto el archivo de configuración usado por vhost(user.config) en AppData/Local/Programador. VS NO PERMITE ARCHIVOS
+  FUERA DEL DIRECTORIO DE LA SOLUCIÓN.
+3 Después de acabar los condicionamientos por cargas ORDENA EL CÓDIGO!!
+X Incluir función que detecte la falta de permisos administrativos y que después de avisar reinicie en modo elevado. Aplicable en:
+	X La monitorización de temperaturas 
+	X El condicionamiento por temperatura.
+X Por alguna razón, cuando el formulario inicia con aero desactivado, falla al activarlo (la cabecera del form aparece en negro). Al
+  habilitar Aero añadir aviso y según proceda reiniciar en modo normal o elevado. SE SETEA LA PROPIEDAD, SE AVISA Y SE APLICA AL SIG. INICIO
+X Como ya está hecho y probado, para la realización de pruebas, en vez de andar quitando y poniendo comillas, habría que crear un
+  método ejecutaAccion() de simulación paralelo activable desde un checkbox provisional.
+X Setear la propiedad parametrosExtra en clAcciones mediante el operador += es incorrecto (VER checkBoxForzarCierre_Click). Por ahora,
+  al implementar sólo el parámetro -f no supone ningún problema; se cambia += por = y listo, pero si se utiliza para establecer -c
+  u otro entonces sí. POSIBLES SOLUCIONES: 1ª Convertirlo en una matriz y desde una función en acciones verificar y cribar los parámetros
+  2ª Utilizar más de una propiedad parametroForzar, parametroComentario, etc ... CUANDO LO HAGAS OPTA POR LA 2ª OPCIÓN. LA 1ª NO ES VIABLE 
+X Arreglar problema "Reinicio apps reg temporizando"
+3 Organiza bien el código
+3 Rematar el seteo de la temporización (REPÁSALO) PARECE QUE TODO ESTÁ MÁS O MENOS BIEN.
+X Añade a settings la posición del tab del Ribbon.
+X Al iniciar el índice del tab debe pasar a 0 ("Principal")
+X En el botón Reiniciar de la sección de inmediato añadir dos subcontroles para los reinicios registrado y de opciones especiales. 
+3 El número de controles se va a disparar en comparación del original. Procura, renombrar los controles de forma lógica y mnemotécnica
+3 Piensa y elige bien la forma de ejecutar las acciones. EMPIEZA, Y SI PROCEDE, MODIFICA DESPUÉS.
+X Como punto de partida comienza creando una pestaña en el Ribbon para acciones inmediatas: Apagar, Reinciar, Hibernar, etc
+3 PIENSA BIEN commo estructurar la implementación de las acciones y los condicionamientos. Haz un proyecto de prueba con params object[]. 
+  Echa algún vistazo a proyectos de consola de otros para tener una referencia y ver como se hace normalmente. PASANDO DE PARAMS ...
+3 CÉNTRATE EN ALGO Y VETE ACABANDO COSAS, TIENES MUCHOS FRENTES ABIERTOS.
+3 Procesos de shutdown/suspensión (por ahora olvídate de avisos y ejecuciones)
+		X Implementar los 3 tipos de reinicio en Inmediato
+		3 Decidir y definir el método sintáctico a usar (NO TE LÍES DEMASIADO!!)
+		X Preparar el terreno para -f y -g como opciones generales de las acciones.
+		! idem anterior con -c (antes se debe comprobar si admite -t 0 -> AUNQUE NO VALE PARA NADA, SÍ LO ADMITE) NO POR AHORA (A IDEAS)
+		! Incluir opción "No cerrar de inmediato" (con Tooltip) de forma que durante los apagados/reinicios aparezca el mensaje NO POR AHORA 
+		  "El sistema está a punto de cerrar" y se permita anular (El equivalente a no utilizar el parámetro -t 0) PASADO A IDEAS OPCIONES
+		3 Aunque sólo sea como esbozo, idem anterior con -t para la temp de la shell de windows.
+		3 Implementarlo el los condicionamientos de temporización y a1hora
+X Propiedades ptes settings:
+		X Índice Tab Ribbon (cuando hagas esto, como está relacionado, que al pulsar play pase al índice 0) LEE NOTAS setPosRibbonTab()
+		X Radios Carga Equipo
+		X Combos		idem
+		X IntegerInputs idem
+X Crea una clase independiente para las funciones. Lee un poco sobre eso de la multi-herencia a ver si se puede aplicar 
+  al Form Form1 : RibbonForm : Funciones ( o algo así). NET NO PERMITE MULTI-HERENCIA. HABRÍA QUE CREAR INTERFACES Y NO COMPENSA
+3 Vete añadiendo las propiedades relativas a la apariencia.
+X No sé por qué, pero sigue habiendo veces en las que no se suma un día si la hora es anterior a la actual. Controla cuándo pasa y soluciónalo.
+X Incluye la bool iniciando en los controles que lo precisen, para que no se dupliquen la activación de controles y el seteo de variables.
+X Añadir switch en Ver para manejar la monitorización de valores de carga al inicio
+3 Empezar con el diseño del menú Ver. Empiézalo. Defínelo y acábalo más tarde. VER NOTAS. ESBOZADO Y EMPEZADO. CREAR OTRA NOTA CUANDO PROCEDA
+3 Cuando el condicionamiento sea A1Hora, al pausar y reanudar habrá que RECALCULAR el retardo. SIGUE CONTROLÁNDOLO
+3 Añadir condicionamiento por temperatura aprovechando la librería de Open Hardware Monitor
+3 ¿Añadir condicionamiento por espacio de HD y/o entrada de batería? NO, AL MENOS POR AHORA
+3 En la clase de CPU se mezclan dynamic con object ¿Se puede/debe hacer así? SE PUEDE, AUNQUE NO ES LÓGICO.
+X La carga de RAM puede obtenerse mediate System.Diagnostic, la librería de VB o de hardware monitor. Elige cuál: VB
+X ¿Añadir tiempo a los condicionamientos de carga? (Ej: durante 2 min)
+X Corregir error al dar el texto del circular progressbar. Toma el valor que esta dado por retardo, pudiendo ser 55876
+X El valor máximo de progrebrass debiere ser 100 siempre, así se podría utilizar el valor como info porcentual. NO ES NECESARIO. FORMAT{"0:P0"}
+X Busca la manera de suspender. (Creo que había alguna librería por ahí). SE PUEDE CON LA CLASE APPLICATION DE WINDOWS.FORMS
+X Parece que el dateNavigator es completamente inútil sin estar vinculado a un calendarView. Es decir el valor siempre se tomará de éste
+  último. Elegir entre: Utilizar este control ligado a un calendarView oculto o buscar una solución alternativa que se adecúe al espacio
+  que existe para el dateNavigator.
+X Durante la carga, ¿qué se hace con DateTime horaA1Hora? ¿Setear sólo la hora guardada al timeSelectorA1Hora o también la decha al
+  dateTimeInput pudiendo aparecer un día anterior? SÓLO LA HORA AL timeSelector!
+X Sumar 1 día en caso de que la hora seleccionada A1Hora haya pasado.
+X Mediante comandos, para las acciones inmediatas, sólo se puede apagar con el parámetro -p. Habrá que buscar una solución para los 
+  reinicios, cierres de sesión, hibernación y suspensión.
+X Cuando el formulario tiene establecido TopMost en True, los MessageBox aparecen debajo. Soluciónalo en la función MsgBox
+X Añadir bloqueo al grupo de acciones Rundll32.exe User32.dll,LockWorkStation 
+X Eliminar el switch Forzado de inmediato y aprovechar el espacio para el bloqueo
+3 Aunque aquí no valga para nada, echa un vistazo para ver como retornar los resultados. Creo que en su día se hizo algo con netstat en VB
+3 Empieza todo desde cero, será más fácil que andar traduciendo todo, variables y métodos incluidos. Quédalo como una referencia
+3 Elige entre utilizar métodos estáticos o instanciar 
+X Los argumentos dados en W81 para el proceso van precedidos por "/", en W7 daban "-". En W8 funciona "-". Verifica si en W7 funciona "/"
+X Empieza con el cargaSettings. Inclúyelo en el constructor en vez de en la carga
+X Asegúrate de que reinicio registrado sirve para algo. SÍ SIRVE																																		
+X Como System.Application tiene implementado SetSuspendState utiliza esa clase. Comprueba que los métodos de Procesa2 funcionan y déjalo
+X Para evitar problemas de diseño empieza con la implementación de las paletas.
+X El superTabControl incluye unos cuantos estilos. puedes implementarlos
+X circularProgressBar... idem anterior.
+X Posiblemente la pestaña Ver se quede corta de espacio. Puedes subdividirlo añadiendo pestañas de "Apariencia" y "Ver" 
+X Decídete entre las settings de VS o las de Nini.dll. VS: NUNCA HE PROBADO EN C#. PROXIFICADAS MEDIANTE PROPIEDADES POR AGILIDAD
+
+IDEAS:
+- Practica "programación horizontal".
+- Este proyecto constará de varios formularios. Tenlo en cuenta a la hora de crear una clase común para funciones.
+- Crea un código estructurado por capas. Los procesos básicos deberán poder ser llamados desde cualquier función o externaamente desde
+  una consola; es decir, no se debe computar todo desde el botón "iniciar"
+Pasar todo el Programador 2 a C# añadiendo:
+- Sustituir Windows Forms por el Toolkit de DotNetBar
+- Interacción entre la temporización del programa y la barra de herramientas de Windows implementando Windows API Code Pack
+- Añadir condicionamientos por carga de CPU y RAM
+- Si consigues "ver" una interfaz de red en concreto o la suma de todas añadir condicionamiento por RED. Recuerda que
+  sólo conseguías "ver" el adaptador de red que Windows considera "por defecto". También había problemas con transmisiones
+  mayores que 3 GB aprox. (Ver MVR)
+- Añadir acciones de hibernación y suspensión.
+- Intentar aprovechar las posibilidades de los controles dej Toolkit (calendarview, barras de progreso, etc)
+- Plantéate utilizar la librería de Nini en vez de utilizar las Settings nativas
+- Añadir posibilidad de añadir clave para impedir la activación o desactivación de la programación.
+- Piensa si merece la pena mantener la temporización de la shell. Sólo es útil con -s, -r y -g
+- Echa un vistazo para ver como funciona rundll32 para intentar solventar problema (1!)
+- Añadir condicionamiento por carga de batería aprovechando las clases PowerManager y BatteryState de Windows API Code Pack en el 
+  namespace Microsoft.WindowsAPICodePack.ApplicationServices 
+- Opciones para el menú ver:
+	- Ver/Ocultar texto barra de progreso circular
+	- Siempre encima 
+	- Aviso Siempre encima
+	- Barra de progreso
+	- Barra progreso circular
+	- Monitorización cargas equipo
+	- Datos estadísticos
+	- Acerca de ... (aquí acuérdate de hacer referencia a las dll externas utilizadas EJ: DotNetBar, OpenHard ...)
+
+- Opciones menú configuración:
+	- Posiblidad de utilizar la temporización de la shell de Windows para los procesos de apagado, reinicio, cierre sesión, hibernación
+	- Posiblidad de forzar cierre cuando se pueda
+	- Reinicio con aplicaciones registradas
+	- Cargar al inicio
+	- Crear accesos directos.
+	- Tiempo de refresco para el temporizador de monitorización
+	- Minimizar a la bandeja de sistema
+	- Posibilidad de acciones retardadas (unos 30 seg) para permitir la anulación (El equivalente a no utilizar -t en shutdown)
+	- Establecimiento de comentario (-c para los procesos shutdown que lo permiten y mensaje forzado en bandeja desde app para el resto)
+	- Resetear configuraciones
+	- (Des)Activar fichero de hibernación con: powercfg -hibernate on | off NOTA: Para comprobar si está activo o no, se puede 
+	  comprobar si existe hiberfil.sys (normalmente en C:\ como archivo oculto de sistema). También se puede comprobar el tamaño
+	  que ocupa e incluso establecer un nuevo tamaño (no inferior al 50% del total de RAM) mediante: powercfg -h -size 50 (siendo
+	  50 el % de RAM) Info: http://www.nextofwindows.com/hiberfil-sys-in-windows-8-and-why-you-shouldnt-disable-hibernation-to-delete-it/
+
+
+- Por ahora, limita la aplicación a 1 solo condicionamiento, pero es perfectamente factible, al haber utilizado varios temporizadores,
+  utilizar varios a la vez. Se podría usar el botón como programador de tareas activas, registrado en el richTextBox y "consultable" 
+  desde la pestaña de "Programación" con el calendarView, que permite colores para cada cosa Por ejemplo: tener programado una 
+  suspensión en 1 hora, al mismo tiempo un aviso por exceso de temperatura y una ejecucion de un script si entra un SAI de forma 
+  permanente.
+
+- Ideas para sistema de comandos:
+	
+	-a				Apagar
+	-r				Reiniciar
+	-s				Suspender
+	-h				Hibernar
+	-b				Bloquear
+	-c				Cerrar Sesión
+	-e  rutarchivo	Ejecutar
+	-v	txtaviso	Avisar
+	-?				Ayuda
+	
+	-t	00:00		Temporizado
+	-i				Inmediato
+	-x				Anular
+
+NOTAS:
+
+1 Sintaxis comando shutdown: (Notas más detalladas en Comando Shutdown.rtf) 
+	[/i | /l | /s | /r | /g | /a | /p | /h | /e | /o] [/hybrid] [/f] [/m \\equipo][/t xxx][/d [p|u:]xx:yy [/c "comentario"]]
+
+2 Suspensión/Hibernación:
+	- Por alguna razón (1!) rundll32.exe powrprof.dll,SetSuspendState 0,1,1 si el archivo de hibernación está deshabilitado NO SUSPENDE.
+	  Esto se puede solventar importando powrprof.dll [DllImport("Powrprof.dll", CharSet = CharSet.Auto, ExactSpelling = true)]
+	- Las 3 booleanas son: 1ª bool hibernate, 2ª bool forceCritical, 3ª disableWakeEvent 
+	- Según WINAPI DOC forceCritical NO SIRVE PARA NADA. https://msdn.microsoft.com/es-es/library/windows/desktop/aa373201(v=vs.85).aspx 
+	- (Des)Habilitar hibernación: powercfg -hibernate off|on
+	- System.Application.SetSuspendState integra exactamente lo mismo con la misma sintaxis. Se optará por este método.
+	- Bloqueo rundll32.exe LockWorkStation
+
+	(1!) El fallo se da porque no se aceptan los parámetros 0,1,1. Da igual lo que se ponga. He probado entrecomillarlo, poner / ... 
+
+2 El valor de dateTimeInputA1Hora se establece en la carga del form, restando las horas al día de hoy, en vez de hacer operaciones
+  en la propiedad horaA1Hora porque al estar deshabilitada la elección de hora en este control, EN PRINCIPIO, parece que debiera
+  plantear ningún problema. Si se presentara algún error se debiere solucionar en la propiedad.
+
+
+				//dateTimeInputA1Hora.MonthCalendar.TodayButtonVisible = false;
+				//dateTimeInputA1Hora.MonthCalendar.TodayButton.Symbol = "hoy";
+				//dateTimeInputA1Hora.MonthCalendar.TodayButton.SymbolSize = 8;
+				dateTimeInputA1Hora.MonthCalendar.TodayButton.ItemAlignment = eItemAlignment.Center;
+				dateTimeInputA1Hora.MonthCalendar.TodayButton.FontItalic = true;
+				dateTimeInputA1Hora.MonthCalendar.TodayButton.Orientation = eOrientation.Vertical;
+				dateTimeInputA1Hora.MonthCalendar.TodayButton.Text = "Loquesea";
+				dateTimeInputA1Hora.MonthCalendar.ClearButtonVisible = false;
+				//MsgBox(horaA1Hora.ToString());
+
+4 El evento CheckedChanged utilizado en los radioButtons captura cualquier cambio en el estado de éste (Checked == true | false)
+  esto hace que, si no se tiene cuidado, se pueda ejecutar el código 2 veces por cada vez que se cambia de radio (cuando se checkea
+  Y cuando se chekea otro)
+
+5 Con este proyecto al trabajar con procesos y librerias externos en modo usuario y administrador USANDO ADEMÁS UN ARCHIVO DE 
+  CONFIGURACIÓN DE APLICACIÓN, hay que ser especialmente cuidadoso con el control de excepciones. Ya ha pasado varias veces 
+  que al interrumpir el programa, como el guardado de las settings se hace al cierre, el programa no podía iniciar. Por tanto:
+	- Intentar cubrir todas las posibilidades
+	- POR SI TODO FALLA, añadir un método que resetee toda la configuración, o al menos las partes más sensibles, de forma 
+	  automática en caso de error fatal. Nota: se podría incluso eliminar
+	- Crear un tag específico y registrar cada una de las excepciones producidas. 
+	- Añadir el .xml de configuración al proyecto para controlarlo de forma ágil.
+	- Especial cuidado con los dynamics
+
+6 Ventajas de sustituir las Settings nativas de VS por Nini Config:
+	- Teniendo hechas las propiedades no sería demasiado trabajo 
+	- Permite utilizar un solo archivo de configuración para varios proyectos o interactuar desde un proyecto a un archivo de 
+	  configuración de otro. 
+	- Después de proxificarlo con propiedades su uso es, al menos, igual de cómodo que con las settings de VS
+	- Permite el auto-guardado cada vez que se setea una variable (estableciendo a true la propiedad AutoSave) 
+	- Se puede elegir el formato (ini, xml o xml de VS) EL .XML DE VS NO ESTÁ SOPORTADO, AL MENOS PARA ESTA VERSIÓN DE VS (2015RC) 
+	- Se puede establecer el directorio donde se guarda para poder monitorizarlo en tiempo real en el proyecto. También evitaría
+	  tener los archivos de configuración de cada proyecto repartidos por distintos directorios en AppData 
+	- Permite crear varias configuraciones o archivos (en caso de error se puede eliminar un bloque). 
+  Desventajas 
+	- Tiene muy limitado la variedad de tipos que se pueden usar (sólo admite string, bool, int, double y poco más) mientras 
+	  que con VS se puede utilizar prácticamente todo y actualmente se están usando byte, TimeSpan y DateTime, aunque tendría
+	  arreglo cambiando los byte por int y parseando los tiempos.
+	- Aunque permite guardar/consultar datos de .xml de VS, el formato soportado es para versiones antiguas de VS. Se ha probado
+	  con la versión 2015 RC con resultado nulo. Es una lástima porque vendría muy bien interactuar desde otras clases o proyectos
+	- El reseteo de la configuración debe ser manual; es decir, debe haber un método que establezca variable por variable. Con VS
+	  es mucho más simple.
+
+7 EXCEPCIÓN NAudio por falta de códec: 
+	- Excepción no controlada del tipo 'NAudio.MmException' en NAudio.dll
+	- Información adicional: NoDriver calling acmFormatSuggest
+
+	//CREACIÓN Y UTILIZACIÓN DE EVENTOS:
+
+		//Se declara uuna variable privada
+		private bool info;
+
+		// Se declara una propiedad pública 
+		public bool Info
+		{
+			get
+			{
+				return info;
+			}
+			set
+			{
+				info = value;
+				OnInfoChanged(EventArgs.Empty);
+			}
+		}
+
+		// Se declara un evento
+		public event EventHandler InfoChanged;
+
+		// Y se crea una subrutina con el código a ejecutar cuando suceda el evento:
+		protected virtual void OnInfoChanged(EventArgs e)
+		{
+			var handler = InfoChanged;
+			if (handler != null)
+				handler(this, e);
+
+			// Código ...
+			string resultado = info ? "info cambió a true" : "info cambió a false";
+			MsgBox(resultado);
+		}
+
+		private void btnAbrirFormclientes_Click(object sender, EventArgs e)
+		{
+			//Sistema para comprobar si un determinado formulario está abierto sin necesidad de instanciar
+			//Copiado de http://ltuttini.blogspot.com.es/2013/02/winforms-verificar-si-el-form-esta.html
+			//OBSERVACIONES: requiere referenciar el namespace System.Linq
+
+			//se localiza el formulario buscandolo entre los forms abiertos 
+			Form frm = Application.OpenForms.Cast<Form>().FirstOrDefault(x => x is frmEdicionCliente);
+ 
+			if (frm != null)
+			{
+				//si la instancia existe la pongo en primer plano
+				frm.BringToFront();
+				return;
+			}
+	 
+			//sino existe la instancia se crea una nueva
+			frm = new frmEdicionCliente();
+			frm.Show();
+		}
+		string programaAsociado(string extension)
+		{
+			const byte S_OK = 0;
+			const byte S_FALSE = 1;
+
+			uint length = 0;
+			uint ret = NativeMethods.AssocQueryString(NativeMethods.AssocF.NoUserSettings, NativeMethods.AssocStr.Executable, 
+				extension, null, null, ref length);
+
+			if (ret != S_FALSE)
+			{
+				//throw new InvalidOperationException("No se pudo determinar el programa asociado a la extensión " + extension);
+				//ANULADO: Al elegir una extensión que tenga asociada una aplicación Metro Windows 8.1 provocaría la excepción
+			}
+
+			var sb = new StringBuilder((int)length); // (length-1) will probably work too as the marshaller adds null termination
+			ret = NativeMethods.AssocQueryString(NativeMethods.AssocF.NoUserSettings, NativeMethods.AssocStr.Executable, 
+				extension, null, sb, ref length);
+
+			if (ret != S_OK)
+			{
+				//throw new InvalidOperationException("No se pudo determinar el programa asociado a la extensión " + extension);
+				//ANULADO: Al elegir una extensión que tenga asociada una aplicación Metro Windows 8.1 provocaría la excepción
+			}
+
+			return sb.ToString();
+		}
+
+		string rutaArchivoConfiguracion()
+		{
+			return System.Configuration.ConfigurationManager.OpenExeConfiguration(System.Configuration.ConfigurationUserLevel.PerUserRoaming).FilePath;
+		}

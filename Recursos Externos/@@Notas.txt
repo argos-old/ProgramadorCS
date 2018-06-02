@@ -1,0 +1,15 @@
+InmediatoRec.dll es una librería de Recursos .ico 
+que contiene los iconos para la categoría "Inmediato"
+de la JumpList (IconReference de Windows API Code Pack
+así lo exige)
+
+Se ha añadido como elemento al proyecto para que se copie
+en el directorio de salida siempre, de forma que SI 
+ONEDRIVE NO HACE DE LAS SUYAS, bastará con sustituir
+InmediatoRec en esta carpeta.
+
+Esta compilado con el programa Axialis IconWorkShop
+desde una librería .icl. La icl se ha guardado en
+D:\Proyectos\Proyectos Windows\Proyectos Recursos
+
+08/06/15

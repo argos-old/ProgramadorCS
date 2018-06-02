@@ -1,0 +1,17 @@
+﻿<Properties StartupItem="ProgramadorCS/ProgramadorCS.csproj" RefactoringSettings.EnableRefactorings="True">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="ProgramadorCS/Acciones.cs">
+    <Files>
+      <File FileName="ProgramadorCS/Enumeraciones.cs" Line="1" Column="1" />
+      <File FileName="ProgramadorCS/FormPpal.cs" Line="1594" Column="17" />
+      <File FileName="AvisosPCS/AvisosPCS/FormConf.cs" Line="1" Column="1" />
+      <File FileName="ProgramadorCS/RAM.cs" Line="1" Column="1" />
+      <File FileName="ProgramadorCS/FormMail.cs" Line="263" Column="30" />
+      <File FileName="ProgramadorCS/Acciones.cs" Line="130" Column="10" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

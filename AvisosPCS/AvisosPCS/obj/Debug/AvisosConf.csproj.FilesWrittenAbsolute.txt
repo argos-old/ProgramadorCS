@@ -1,0 +1,15 @@
+/media/ivan/Acer/Users/ivanr/Proyectos/VS2013/ProgramadorCS/AvisosPCS/AvisosPCS/obj/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/media/ivan/Acer/Users/ivanr/Proyectos/VS2013/ProgramadorCS/AvisosPCS/AvisosPCS/obj/Debug/AvisosPCS.FormConf.resources
+/media/ivan/Acer/Users/ivanr/Proyectos/VS2013/ProgramadorCS/AvisosPCS/AvisosPCS/obj/Debug/AvisosPCS.Properties.Resources.resources
+/media/ivan/Acer/Users/ivanr/Proyectos/VS2013/ProgramadorCS/AvisosPCS/AvisosPCS/bin/Debug/AvisosPCS.exe.config
+/media/ivan/Acer/Users/ivanr/Proyectos/VS2013/ProgramadorCS/AvisosPCS/AvisosPCS/bin/Debug/AvisosPCS.exe.mdb
+/media/ivan/Acer/Users/ivanr/Proyectos/VS2013/ProgramadorCS/AvisosPCS/AvisosPCS/bin/Debug/AvisosPCS.exe
+/media/ivan/Acer/Users/ivanr/Proyectos/VS2013/ProgramadorCS/AvisosPCS/AvisosPCS/obj/Debug/AvisosPCS.exe
+/media/ivan/Acer/Users/ivanr/Proyectos/VS2013/ProgramadorCS/AvisosPCS/AvisosPCS/obj/Debug/AvisosPCS.exe.mdb
+/media/ivan/Acer/Users/ivanr/Proyectos/VS2013/ProgramadorCS/AvisosPCS/AvisosPCS/bin/Debug/Cifra2.dll
+/media/ivan/Acer/Users/ivanr/Proyectos/VS2013/ProgramadorCS/AvisosPCS/AvisosPCS/bin/Debug/DevComponents.DotNetBar.Design.dll
+/media/ivan/Acer/Users/ivanr/Proyectos/VS2013/ProgramadorCS/AvisosPCS/AvisosPCS/bin/Debug/DevComponents.DotNetBar2.dll
+/media/ivan/Acer/Users/ivanr/Proyectos/VS2013/ProgramadorCS/AvisosPCS/AvisosPCS/bin/Debug/NAudio.dll
+/media/ivan/Acer/Users/ivanr/Proyectos/VS2013/ProgramadorCS/AvisosPCS/AvisosPCS/bin/Debug/Nini.dll
+/media/ivan/Acer/Users/ivanr/Proyectos/VS2013/ProgramadorCS/AvisosPCS/AvisosPCS/bin/Debug/Rep.dll
+/media/ivan/Acer/Users/ivanr/Proyectos/VS2013/ProgramadorCS/AvisosPCS/AvisosPCS/bin/Debug/CEXEngine.dll

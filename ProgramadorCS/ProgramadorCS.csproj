@@ -1,0 +1,298 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{238D59FD-EC5B-4D19-846B-F1C00FCC02B2}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ProgramadorCS</RootNamespace>
+    <AssemblyName>ProgramadorCS</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>ProgramadorCS.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>ProgramadorCS.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>arañaG256.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Acinme">
+      <HintPath>..\Acinme\bin\Debug\Acinme.exe</HintPath>
+    </Reference>
+    <Reference Include="AvisosPCS">
+      <HintPath>..\AvisosPCS\AvisosPCS\bin\Debug\AvisosPCS.exe</HintPath>
+    </Reference>
+    <Reference Include="AvisosRep">
+      <HintPath>..\AvisosRep\AvisosRep\bin\Debug\AvisosRep.exe</HintPath>
+    </Reference>
+    <Reference Include="CEXEngine">
+      <HintPath>..\..\..\NET_Librerías\Trabajo\CipherEX\v1.3\Compilado\CEXEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="Cifra2">
+      <HintPath>..\Cifra2\bin\Debug\Cifra2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevComponents.DotNetBar.Design, Version=11.2.0.1, Culture=neutral, PublicKeyToken=2c9ff1fddc42653c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\NET_Personalización\Trabajo\DotNetBar112\Bin\DevComponents.DotNetBar.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="DevComponents.DotNetBar.Schedule, Version=11.2.0.1, Culture=neutral, PublicKeyToken=c39c3242a43eee2b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\NET_Personalización\Trabajo\DotNetBar112\Bin\DevComponents.DotNetBar.Schedule.dll</HintPath>
+    </Reference>
+    <Reference Include="DevComponents.DotNetBar2, Version=11.2.0.1, Culture=neutral, PublicKeyToken=c39c3242a43eee2b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\NET_Personalización\Trabajo\DotNetBar112\Bin\DevComponents.DotNetBar2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevComponents.Instrumentation.Design, Version=11.2.0.1, Culture=neutral, PublicKeyToken=30cefae8f341f577, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\NET_Personalización\Trabajo\DotNetBar112\Bin\DevComponents.Instrumentation.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.WindowsAPICodePack, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\NET_Librerías\Trabajo\WindowsAPICodePack\v1.1\Bin\Microsoft.WindowsAPICodePack.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack.Shell">
+      <HintPath>..\..\..\NET_Librerías\Trabajo\WindowsAPICodePack\v1.1\Bin\Microsoft.WindowsAPICodePack.Shell.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenHardwareMonitorLib, Version=0.7.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\NET_Librerías\Trabajo\OpenHardwareMonitor\Compilado\0.7.1\OpenHardwareMonitorLib.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Acciones.cs" />
+    <Compile Include="CPU.cs" />
+    <Compile Include="DriveDetector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Energia.cs" />
+    <Compile Include="Enumeraciones.cs" />
+    <Compile Include="FormPpal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPpal.Designer.cs">
+      <DependentUpon>FormPpal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormEjecuciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEjecuciones.Designer.cs">
+      <DependentUpon>FormEjecuciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormMail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMail.Designer.cs">
+      <DependentUpon>FormMail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mail.cs" />
+    <Compile Include="Externos.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RAM.cs" />
+    <Compile Include="Red.cs" />
+    <Compile Include="RedLista.cs" />
+    <Compile Include="Temp.cs" />
+    <EmbeddedResource Include="FormPpal.resx">
+      <DependentUpon>FormPpal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormEjecuciones.resx">
+      <DependentUpon>FormEjecuciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMail.resx">
+      <DependentUpon>FormMail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="ProgramadorCS.ruleset" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\palette16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\palette16B.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\palette16C.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\palette22.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\palette24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\palette24B.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\palette24C.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\palette32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\palette32B.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\palette32C.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\style16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\style22.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\style24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tab16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tab22.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel016.png" />
+    <None Include="Resources\taskbar_start_menu16.png" />
+    <None Include="Resources\windows16.png" />
+    <None Include="Resources\minimize_box_blue016.png" />
+    <None Include="Resources\configure.png" />
+    <None Include="Resources\Actions-system-switch-user-icon24.png" />
+    <None Include="Resources\Actions-system-switch-user-icon16.png" />
+    <None Include="Resources\Actions-system-suspend-icon24.png" />
+    <None Include="Resources\Actions-system-suspend-icon16.png" />
+    <None Include="Resources\Actions-system-suspend-hibernate-icon22 .png" />
+    <None Include="Resources\Actions-system-suspend-hibernate-icon16.png" />
+    <None Include="Resources\Actions-system-reboot-icon221.png" />
+    <None Include="Resources\Actions-system-reboot-icon161.png" />
+    <None Include="Resources\Actions-system-log-out-icon24.png" />
+    <None Include="Resources\Actions-system-log-out-icon16.png" />
+    <None Include="Resources\Actions-system-lock-screen-icon24.png" />
+    <None Include="Resources\Actions-system-lock-screen-icon16.png" />
+    <None Include="Resources\dashboard-show.png" />
+    <None Include="Resources\shape_handles.png" />
+    <None Include="Resources\information.png" />
+    <None Include="Resources\door_out.png" />
+    <None Include="Resources\control_stop_blue.png" />
+    <None Include="Resources\control_pause_blue.png" />
+    <None Include="Resources\control_play_blue.png" />
+    <None Include="Resources\schedule16.png" />
+    <None Include="Resources\cd_drive016.png" />
+    <None Include="Resources\access_point016.png" />
+    <None Include="Resources\power016.png" />
+    <None Include="Resources\hardwareB016.png" />
+    <None Include="Resources\hardware016.png" />
+    <None Include="Resources\ksim.png" />
+    <None Include="Resources\despertador16.png" />
+    <None Include="Resources\chronometer016.png" />
+    <None Include="Resources\32Unidad.ico" />
+    <None Include="Resources\password.gif" />
+    <None Include="Resources\eye.png" />
+    <None Include="Resources\broom16.png" />
+    <None Include="Resources\attachmentD16.png" />
+    <EmbeddedResource Include="InmediatoRc.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <Content Include="arañaB256.ico" />
+    <Content Include="arañaG256.ico" />
+    <Content Include="Notas.txt" />
+    <None Include="Resources\64power_management.ico" />
+    <None Include="Resources\64HardwareChip.ico" />
+    <None Include="Resources\48Timer.ico" />
+    <None Include="Resources\64Thermometer_Full.ico" />
+    <None Include="Resources\64RAM Drive.ico" />
+    <None Include="Resources\64Claptopcharge.ico" />
+    <None Include="Resources\64battery.ico" />
+    <None Include="Resources\64access_point.ico" />
+    <None Include="Resources\48laptop_charge.ico" />
+    <None Include="Resources\48Alarm_clock.ico" />
+    <None Include="Resources\64player_stop.ico" />
+    <None Include="Resources\64player_play.ico" />
+    <None Include="Resources\64player_pause.ico" />
+    <None Include="Resources\Actions-system-reboot-icon24.png" />
+    <None Include="Resources\Actions-system-reboot-icon16.png" />
+    <None Include="Resources\Actions-system-suspend-icon48.png" />
+    <None Include="Resources\Actions-system-suspend-icon32.png" />
+    <None Include="Resources\Actions-system-suspend-hibernate-icon48.png" />
+    <None Include="Resources\Actions-system-suspend-hibernate-icon32.png" />
+    <None Include="Resources\Actions-system-reboot-icon48.png" />
+    <None Include="Resources\Actions-system-reboot-icon32.png" />
+    <None Include="Resources\Actions-system-log-out-icon48.png" />
+    <None Include="Resources\Actions-system-log-out-icon32.png" />
+    <None Include="Resources\Actions-system-lock-screen-icon48.png" />
+    <None Include="Resources\Actions-system-lock-screen-icon321.png" />
+    <None Include="Resources\Actions-system-shutdown-icon64.png" />
+    <None Include="Resources\Actions-system-shutdown-icon48.png" />
+    <None Include="Resources\Actions-system-shutdown-icon32.png" />
+    <None Include="Resources\Actions-system-shutdown-icon24.png" />
+    <None Include="Resources\Actions-system-shutdown-icon16.png" />
+    <None Include="Resources\Actions-system-lock-screen-icon32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="RecursosExternos\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

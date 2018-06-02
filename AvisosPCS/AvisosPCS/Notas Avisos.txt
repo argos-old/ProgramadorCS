@@ -1,0 +1,87 @@
+﻿===========================
+NOTAS AVISOS PROGRAMADOR C#
+===========================
+PRIORITARIO
+-----------
+
+- Aunque la librería esté hecha para poder utilizarla con posterioridad, restringe el acceso todo lo posible; es decir, pasa
+  a private todo lo que se pueda en la clase Reproductor.
+- Al manejar las excepciones, ten en cuenta la Excepción no controlada del tipo 'System.InvalidOperationException' en NAudio.dll 
+  Información adicional: Got a frame with channel mode Mono, in an MP3 with 2 channels. Mp3FileReader does not support changes to 
+  channel count. producida al elegir un tema de este tipo borrando temaPersonalElegido (Ej: 50 cent - Candy Shop) NOTA: Con WMP
+  no se produce este error. PRUEBA A FORZAR EL STEREO EN EN EL SampleChannel --> FUNCIONA!!
+- Al ir acabando abrir con VS2015 o ver con alguna herramienta de productividad cuántas referencias tiene cada propiedad
+  para eliminar las que o procedan..
+- Solucionar problema "No se reproduce tema Personal"
+- Hacer pruebas para ver si se reproducen los m4a, aac, y resto de extensiones relacionadas con aif
+- Realizar boton Aceptar; está sin hacer. Conviértelo en Cerrar haciendo un test de campos vacíos para pie, cuerpo, etc..
+- Ordenar código insertándolo en orden en las regiones pertinentes
+
+ACABADO:
+--------
+
+X Encapsular niveles superiores con try/catch
+X Cuando se pase a Avisos se habrá de cifrar toda la información sensible con el superCipher usado en Programador. SE ME OCURRE QUE SE 
+  PUEDE AGREGAR EL PROYECTO Cifra2 A ÉSTE SIN NECESIDAD DE 
+X Parametrizar la carga de AvisosRep con siempreEncima, activarAero y estilo, exactamente de la misma forma que se ha hecho 
+  con AvisosPCS
+X Añadir botón de borrado en los textbox
+X Añadir botón de Fecha y hora en el Pie		
+X Impedir la posibilidad de que los dos checks (Visual y sonoro) estén ambos 'unchecked'
+X Re-agregar las referencias Rep.dll y AvisosRep.exe para ver si se soluciona el problema "no se copia AvisosRep.exe al path
+  de Programador" Nota: Ha habido un momento en que esas referencias aparecían con el triángulo amarillo
+X Fijar una longitud máxima para las cadenas de marquesina, cuerpo y pie
+X Implementa un temporizador en vez de andar haciendo malabarismos con eventos para utilizar el evento PlaybackStopped de NAudio
+X!Para utilizar los recursos utilizados en Programador tienes 2 opciones:
+	! Utilizar la técnica explicada por Tuttini "Recuperar una imagen que es un recurso incrustado" y si no lo entiendes o puedes
+	  pasar al 2º punto
+	! Crear un una librería de recursos embebidos como ya hiciste en ProgramadorCS para las JumpList (mira lo hecho setJumpList())
+	  si no me falla la memoria, en vez de hacerlo en C++ se hizo con un programita de tto de imágenes muy sencillo que se
+	  supone debe andar por ALMACEN\Programas\... (que por otra parte es lo que se debe utilizar normalmente)
+	X Crear un resx incustrado en la clase Reproductor
+X Crear el form que contendrá los avisos sonoros y visuales.
+	X Diseñarlo fijándose en lo ya hecho en ProgramadorVB
+	3 Aprovechar las propiedades de AvisosPCS e incluirlas en el proyecto, teniendo en cuenta que sólo harán falta getters
+X Plantéate utilizar, en vez de NAudio, la librería de WMP, resolvería muchos conflictos de reproducción (admite cualquier formato
+  se resuelve el conflicto de reproducción en bucle, etc), aunque ésta no sea GLP. AUNQUE SÓLO SEA POR QUE ES SOFTWARE LIBRE, QUÉ-
+  DATE CON NAUDIO. EN FUTURAS VERSIONES SE PODRÍA DAR LA POSIBILIDAD DE UTILIZAR UNA U OTRA LIBRERÍA.
+X Léete las notas corresponientes al anterior proyecto de Avisos. Ten en cuenta, sobre todo, el esquema de funcionamiento de los
+  avisos; es decir, cómo ha de funcionar: si en "silencio", con minireproductor, etc.. QUEDA CRISTALINO ESTE PUNTO ANTES DE 
+  EMPEZAR NADA QUE LUEGO ECHE ATRÁS TODO O BUENA PARTE DEL TRABAJO REALIZADO!! COPIADO PUNTO DE NOTAS.TXT--->
+  X Se produce un error al probar distintos sonidos. Esto es porque se utiliza sólo una instancia de la clase Reproductor. Para 
+  corregirlo y solucionar el problema de establecer labelTiempoTotal.Text sin necesidad de hacer "play" se me ocurre instanciar
+  al cambiar el valor del combo.
+  X Los avisos sonoros, en caso de que sean seleccionados sin los visuales, necesitan un "soporte" desde donde ejecutarse. En
+	  el programador VB no existía este problema puesto que formaba parte del proyecto principal. Posibles soluciones:
+		1 Crear un form a modo de micro-reproductor. EN CASO DE REPRODUCCIÓN EN BUCLE, ÉSTA SERÍA LA MEJOR OPCIÓN. DE OTRA FORMA
+		  NO SE PUDIERE PARAR LA REPRODUCCIÓN. ¡¡OPCIÓN FINALISTA!! --> 2º CANDIDATA
+		2 Crear un form invisible
+		3 Ejecutarlo desde consola. POCO RECOMENDABLE: SIEMPRE SE VE LA APERTURA DE LA CONSOLA.
+		4 Ejecutarlo tal y como está ahora; es decir, que dependa del form de configuraciones, minimizándolo y ocultándolo de 
+		  la barra de tareas
+	 (*)5 Integrarlo todo (visual y sonoro) en un mismo form mostrando/ocultando cada 1 de las partes o las 2 a la vez. TAMBIÉN
+		  VALDRÍA PARA PARARLO EN CASO DE REPRODUCCIÓN LARGA O EN BUCLE. ¡¡OPCIÓN FINALISTA!! -> ¡¡CANDIDATA GANADORA!!
+X Crear 3 proyectos: 
+		X uno de configuración Configuración ejecutable desde ProgramadorCS 
+		X otro de reproducción de avisos, visuales y/o sonoros (ver 5 anterior)
+		X un proyecto con la clase de reproducción
+X Aprovecha todo lo que valga del ya hecho en la versión preliminar; es mucho trabajo y la mayor parte es correcto.
+X Empollate de nuevo la librería NAudio (Ucreo, si no recuerdo mal que hay un proyecto "Pruebas Audio")
+X Diseñar el form. Toma como referencia lo hecho anteriormente en Avisos de ProgramadorCS, teniendo en cuenta los errores cometidos; 
+  es decir, nada de 2 botones de reproducción; nada de complicaciones innecesarias.
+X Crear las propiedades pertinentes mediante el sistema de propiedades proxificadas utilizando Nini para poder elegir el directorio 
+  de destino.
+
+
+
+
+NOTAS:
+-----
+-Recuerda que la reproducción en bucle y puede que más cosas, se hacen a través del archivo de configuración de Nini
+
+IDEAS:
+-----
+- Para futuras versiones deberían mantenerse las 3: Configuración, reproducción Audio, y Avisos.
+	- La de reproducción (Rep) no tendría nada que ver con recursos, es decir desde configuración o avisos se debería
+	  Reproducir(recursoMP3) Reproducir(recursoWAV) y Reproducir(ficheroMP3)
+- Posibilidad de elegir entre las librerías NAudio y WMP 

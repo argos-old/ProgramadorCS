@@ -1,0 +1,10 @@
+D:\OneDrive\Proyectos\VS2013\ProgramadorCS\Rep\obj\Debug\Rep.csprojResolveAssemblyReference.cache
+D:\OneDrive\Proyectos\VS2013\ProgramadorCS\Rep\obj\Debug\Rep.Resource1.resources
+D:\OneDrive\Proyectos\VS2013\ProgramadorCS\Rep\obj\Debug\Rep.csproj.GenerateResource.Cache
+D:\OneDrive\Proyectos\VS2013\ProgramadorCS\Rep\bin\Debug\Rep.dll
+D:\OneDrive\Proyectos\VS2013\ProgramadorCS\Rep\bin\Debug\Rep.pdb
+D:\OneDrive\Proyectos\VS2013\ProgramadorCS\Rep\bin\Debug\NAudio.dll
+D:\OneDrive\Proyectos\VS2013\ProgramadorCS\Rep\bin\Debug\Nini.dll
+D:\OneDrive\Proyectos\VS2013\ProgramadorCS\Rep\bin\Debug\NAudio.xml
+D:\OneDrive\Proyectos\VS2013\ProgramadorCS\Rep\obj\Debug\Rep.dll
+D:\OneDrive\Proyectos\VS2013\ProgramadorCS\Rep\obj\Debug\Rep.pdb
